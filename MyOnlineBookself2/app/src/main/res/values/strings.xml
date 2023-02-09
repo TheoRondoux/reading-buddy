@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Online Bookself</string>
+    <string name="my_online_bookshelf">📕 My Online Bookshelf</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
