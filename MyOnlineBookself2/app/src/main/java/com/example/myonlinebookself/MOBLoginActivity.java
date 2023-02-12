@@ -1,20 +1,35 @@
 package com.example.myonlinebookself;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myonlinebookself.utils.Constants;
 import com.example.myonlinebookself.utils.PreferenceUtils;
+import com.example.myonlinebookself.utils.QuoteResponse;
+import com.example.myonlinebookself.utils.QuoteResponseListener;
+import com.example.myonlinebookself.utils.RequestManager;
+
+import org.w3c.dom.Text;
+
+import java.util.List;
+import java.util.Set;
 
 public class MOBLoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mLoggingEditText;
     private EditText mPasswordEditText;
+    private TextView mQuoteText;
+    private TextView mAuthorText;
+    RequestManager manager;
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +37,45 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.login_layout);
         mLoggingEditText = (EditText) findViewById(R.id.usernameInput);
         mPasswordEditText = (EditText) findViewById(R.id.passwordInput);
+        mQuoteText = (TextView) findViewById(R.id.quoteTextHolder);
+        mAuthorText = (TextView) findViewById(R.id.authorTextHolder);
+
+        manager = new RequestManager(this);
+        manager.getAllQuotes(listner);
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("Loading...");
+        dialog.show();
 
         final String storedLogin = PreferenceUtils.getLogin();
         if(!TextUtils.isEmpty(storedLogin)){
             startActivity(getIntent(storedLogin));
+        }
+    }
+
+    private final QuoteResponseListener listner = new QuoteResponseListener() {
+        @Override
+        public void didFetch(List<QuoteResponse> response, String message) {
+            showRandomQuote(response, mQuoteText, mAuthorText);
+            dialog.dismiss();
+        }
+
+        @Override
+        public void didError(String message) {
+            dialog.dismiss();
+            Toast.makeText(MOBLoginActivity.this, message, Toast.LENGTH_SHORT);
+        }
+    };
+
+    //Function that shows a random quote
+    private void showRandomQuote(List<QuoteResponse> response, TextView mQuoteText, TextView mAuthorText) {
+        int nbOfQuote = response.size();
+        int randomQuote = (int)Math.floor(Math.random() * nbOfQuote+1);
+        mQuoteText.setText("\""+response.get(randomQuote).getText()+"\"");
+        if (!response.get(randomQuote).getAuthor().isEmpty()){
+            mAuthorText.setText(response.get(randomQuote).getAuthor());
+        }
+        else{
+            mAuthorText.setText("");
         }
     }
 
@@ -52,5 +102,6 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
         intent.putExtras(extras);
         return intent;
     }
+
 }
 
