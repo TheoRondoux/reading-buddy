@@ -1,27 +1,31 @@
 package com.example.myonlinebookself;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myonlinebookself.utils.Constants;
-import com.example.myonlinebookself.utils.PreferenceUtils;
 import com.example.myonlinebookself.utils.QuoteResponse;
 import com.example.myonlinebookself.utils.QuoteResponseListener;
 import com.example.myonlinebookself.utils.RequestManager;
-
-import org.w3c.dom.Text;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
-import java.util.Set;
 
 public class MOBLoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mLoggingEditText;
@@ -30,25 +34,34 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
     private TextView mAuthorText;
     RequestManager manager;
     ProgressDialog dialog;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
-        mLoggingEditText = (EditText) findViewById(R.id.usernameInput);
-        mPasswordEditText = (EditText) findViewById(R.id.passwordInput);
+        mLoggingEditText = (EditText) findViewById(R.id.emailInputRegister);
+        mPasswordEditText = (EditText) findViewById(R.id.passwordInputRegister);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        //Random Quote system
         mQuoteText = (TextView) findViewById(R.id.quoteTextHolder);
         mAuthorText = (TextView) findViewById(R.id.authorTextHolder);
-
         manager = new RequestManager(this);
         manager.getAllQuotes(listner);
         dialog = new ProgressDialog(this);
         dialog.setTitle("Loading...");
         dialog.show();
+    }
 
-        final String storedLogin = PreferenceUtils.getLogin();
-        if(!TextUtils.isEmpty(storedLogin)){
-            startActivity(getIntent(storedLogin));
+    @Override
+    public void onStart(){
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null)
+        {
+            startActivity(new Intent(this, MainActivity.class));
         }
     }
 
@@ -89,23 +102,27 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this, "Empty password!", Toast.LENGTH_LONG).show();
             return;
         }
-
-        PreferenceUtils.setLogin(mLoggingEditText.getText().toString());
-        //PreferenceUtils.setPassword(mPasswordEditText.getText().toString());
-        startActivity(getIntent(PreferenceUtils.getLogin()));
+        mAuth.signInWithEmailAndPassword(String.valueOf(mLoggingEditText.getText()), String.valueOf(mPasswordEditText.getText()))
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Log.d(TAG, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            startActivity(new Intent(MOBLoginActivity.this, MainActivity.class));
+                        } else {
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(MOBLoginActivity.this, "Authentication failed.", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
     public void gotoSignUp(View view){
         startActivity(new Intent(this, MOBSignUpActivity.class));
     }
 
-    private Intent getIntent(String username){
-        Intent intent = new Intent(this, MainActivity.class);
-        final Bundle extras = new Bundle();
-        extras.putString(Constants.Login.EXTRA_LOGIN, username);
-        intent.putExtras(extras);
-        return intent;
-    }
+
 
 }
 

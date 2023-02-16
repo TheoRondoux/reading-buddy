@@ -32,30 +32,26 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <EditText
-            android:id="@+id/usernameInput"
+            android:id="@+id/emailInputRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:autofillHints=""
             android:ems="10"
-            android:hint="@string/username"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColor="#FFFFFF"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress"
             android:textColorHint="#A8FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextContrastCheck" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/passwordInput"
+            android:id="@+id/passwordInputRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:ems="10"
@@ -67,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameInput"
+            app:layout_constraintTop_toBottomOf="@+id/emailInputRegister"
             tools:ignore="TextContrastCheck" />
 
         <Button
@@ -80,14 +76,15 @@
             android:backgroundTint="#FFFFFF"
             android:backgroundTintMode="src_over"
             android:foregroundTint="#000000"
+            android:onClick="createAccount"
             android:text="@string/sign_up"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordConfirmInput" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordConfirmInputRegister" />
 
         <EditText
-            android:id="@+id/passwordConfirmInput"
+            android:id="@+id/passwordConfirmInputRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -101,7 +98,7 @@
             android:textColorHint="#A8FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordInput"
+            app:layout_constraintTop_toBottomOf="@+id/passwordInputRegister"
             tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
