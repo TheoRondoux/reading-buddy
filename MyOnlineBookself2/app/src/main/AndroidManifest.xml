@@ -18,6 +18,10 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".MOBSignUpActivity"
+            android:exported="true">
+        </activity>
         <activity android:name=".MOBLoginActivity"
             android:exported="true">
             <intent-filter>

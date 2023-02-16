@@ -68,14 +68,14 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
 
     //Function that shows a random quote
     private void showRandomQuote(List<QuoteResponse> response, TextView mQuoteText, TextView mAuthorText) {
-        int nbOfQuote = response.size();
-        int randomQuote = (int)Math.floor(Math.random() * nbOfQuote+1);
-        mQuoteText.setText("\""+response.get(randomQuote).getText()+"\"");
-        if (!response.get(randomQuote).getAuthor().isEmpty()){
-            mAuthorText.setText(response.get(randomQuote).getAuthor());
+        int nbOfQuote = response.size();                                    //Getting the number of elements in the response of the HTTP request
+        int randomQuote = (int)Math.floor(Math.random() * nbOfQuote+1);     //Generating a random number to choose a quote
+        mQuoteText.setText("\""+response.get(randomQuote).getText()+"\"");  //Setting the quote text to the appropriate TextView
+        if (!response.get(randomQuote).getAuthor().isEmpty()){              //If the author is not null...
+            mAuthorText.setText(response.get(randomQuote).getAuthor());     //Setting the author of the quote to the appropriate TextView
         }
         else{
-            mAuthorText.setText("");
+            mAuthorText.setText("");                                        //Else, setting the author TextView with no text
         }
     }
 
@@ -93,6 +93,10 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
         PreferenceUtils.setLogin(mLoggingEditText.getText().toString());
         //PreferenceUtils.setPassword(mPasswordEditText.getText().toString());
         startActivity(getIntent(PreferenceUtils.getLogin()));
+    }
+
+    public void gotoSignUp(View view){
+        startActivity(new Intent(this, MOBSignUpActivity.class));
     }
 
     private Intent getIntent(String username){
