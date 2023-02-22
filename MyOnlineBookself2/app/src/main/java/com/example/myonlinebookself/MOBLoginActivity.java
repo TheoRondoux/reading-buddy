@@ -106,9 +106,11 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (task.isSuccessful()){
+                            Toast.makeText(MOBLoginActivity.this, "Hello !", Toast.LENGTH_LONG).show();
                             Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            //FirebaseUser user = mAuth.getCurrentUser();
                             startActivity(new Intent(MOBLoginActivity.this, MainActivity.class));
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

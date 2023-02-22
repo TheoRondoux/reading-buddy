@@ -67,7 +67,7 @@ public class MOBSignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            //FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(MOBSignUpActivity.this, "Account created !", Toast.LENGTH_LONG).show();
                             finish();
                         } else {

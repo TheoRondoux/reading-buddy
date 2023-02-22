@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         /*
         Le code utilise la classe "RecyclerView" pour créer une vue défilante qui affiche les éléments de la liste.
         D'abord, il récupère une instance de la vue défilante à partir de son identifiant de ressource, "recycleview",
@@ -69,15 +68,6 @@ public class MainActivity extends AppCompatActivity {
         pour obtenir le contexte de l'application à partir de l'activité en cours.
          */
 
-        /*
-        items.add(new Item("Harry Potter 1","Harry Potter à l école des sorciers : Harry Potter découvre qu'il est un sorcier et commence sa première année à Poudlard.",R.drawable.harry_1));
-        items.add(new Item("Harry Potter 2","Harry Potter et la chambre des secrets : Harry doit trouver et détruire le journal intime de Voldemort pour sauver ses amis de la Chambre des Secrets.",R.drawable.harry_2));
-        items.add(new Item("Harry Potter 3","Harry Potter et le prisonnier d'Azkaban : Harry rencontre son parrain Sirius Black et doit éviter le Détraqueur envoyé pour le capturer.",R.drawable.harry_3));
-        items.add(new Item("Harry Potter 4","Harry Potter et la coupe de feu : Harry participe au dangereux tournoi des trois sorciers et découvre la résurrection de Voldemort.",R.drawable.harry_4));
-        items.add(new Item("Harry Potter 5","Harry Potter et l'Ordre du Phénix : Harry et ses amis créent l'Armée de Dumbledore pour se préparer à la guerre contre Voldemort et l'Ordre du Phénix est créé pour lutter contre lui.",R.drawable.harry_5));
-        items.add(new Item("Harry Potter 6","Harry Potter et le Prince de sang-mêlé : Harry découvre le passé de Voldemort et les plans de son retour, tandis que des romances naissent entre les personnages.",R.drawable.harry_6));
-        items.add(new Item("Harry Potter 7","Harry Potter et les Reliques de la Mort : Harry et ses amis cherchent les horcruxes pour détruire Voldemort et finissent par affronter le Seigneur des Ténèbres dans la bataille de Poudlard.",R.drawable.harry_7));
-        */
         RecyclerView recyclerView = findViewById(R.id.recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new MyAdapterBook(getApplicationContext(),items));
