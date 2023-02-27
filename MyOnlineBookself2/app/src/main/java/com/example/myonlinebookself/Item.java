@@ -1,13 +1,15 @@
 package com.example.myonlinebookself;
 
 public class Item {
+    String id;
     String title;
     String author;
     String description;
     String details;
     int image;
 
-    public Item(String title, String author, String description, String details, int image) {
+    public Item(String id, String title, String author, String description, String details, int image) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
@@ -16,7 +18,7 @@ public class Item {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -24,7 +26,7 @@ public class Item {
     }
 
     public String getAuthor() {
-        return author;
+        return this.author;
     }
 
     public void setAuthor(String author) {
@@ -32,7 +34,7 @@ public class Item {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -40,7 +42,7 @@ public class Item {
     }
 
     public String getDetails() {
-        return details;
+        return this.details;
     }
 
     public void setDetails(String details) {
@@ -48,10 +50,12 @@ public class Item {
     }
 
     public int getImage() {
-        return image;
+        return this.image;
     }
 
     public void setImage(int image) {
         this.image = image;
     }
+
+    public String getId() {return this.id; }
 }

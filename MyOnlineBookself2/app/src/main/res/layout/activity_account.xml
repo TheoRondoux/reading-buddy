@@ -8,28 +8,30 @@
     tools:context=".Account">
 
     <!-- Titre centré en haut de la page -->
-    <TextView
-        android:id="@+id/title_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Online Bookshelf"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
 
     <!-- Nom d'utilisateur centré en dessous du titre -->
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/my_online_bookshelf"
+        android:textSize="34sp" />
+
     <TextView
         android:id="@+id/username_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
-        android:textSize="18sp"
-        android:layout_below="@id/title_textview"
+        android:layout_below="@+id/textView5"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="15dp"
+        android:text="Username"
+        android:textSize="18sp" />
 
     <!-- Nombre de livres lus centré en dessous du nom d'utilisateur -->
+
     <TextView
         android:id="@+id/books_read_textview"
         android:layout_width="wrap_content"
@@ -49,6 +51,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/buttom_nav_menu"
         android:layout_alignParentBottom="true">
+
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottomNavigationView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#9D2524"
+        android:onClick="onClick"
+        android:text="Logout"
+        android:textColor="#FFF" />
 
 </RelativeLayout>

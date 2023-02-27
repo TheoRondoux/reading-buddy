@@ -1,6 +1,7 @@
 package com.example.myonlinebookself;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class MyViewHolderBook extends RecyclerView.ViewHolder {
 
     ImageView imageView;
     TextView titleView, authorView;
+    Button deleteButton;
 
 
     public MyViewHolderBook(@NonNull View itemView) {
@@ -29,6 +31,7 @@ public class MyViewHolderBook extends RecyclerView.ViewHolder {
         imageView = itemView.findViewById(R.id.imageBookViewShop);
         titleView = itemView.findViewById(R.id.titleTextBookViewShop);
         authorView = itemView.findViewById(R.id.authorBookViewShop);
+        deleteButton = itemView.findViewById(R.id.DeleteBookButton);
     }
 }
 

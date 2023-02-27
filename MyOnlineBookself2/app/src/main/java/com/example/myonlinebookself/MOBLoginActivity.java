@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myonlinebookself.utils.Constants;
 import com.example.myonlinebookself.utils.QuoteResponse;
 import com.example.myonlinebookself.utils.QuoteResponseListener;
 import com.example.myonlinebookself.utils.RequestManager;
@@ -108,7 +107,6 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()){
-                            Toast.makeText(MOBLoginActivity.this, "Hello !", Toast.LENGTH_LONG).show();
                             Log.d(TAG, "signInWithEmail:success");
                             //FirebaseUser user = mAuth.getCurrentUser();
                             startActivity(new Intent(MOBLoginActivity.this, MainActivity.class));
