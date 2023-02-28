@@ -1,4 +1,4 @@
-package com.example.myonlinebookself;
+package com.example.myonlinebookself.recycler;
 
 import static android.content.ContentValues.TAG;
 
@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myonlinebookself.items.Book;
+import com.example.myonlinebookself.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,9 +31,9 @@ import java.util.Map;
 public class MyAdapterShop extends RecyclerView.Adapter<MyViewHolderShop> {
 
     Context context;
-    List<Item> rentBook;
+    List<Book> rentBook;
 
-    public MyAdapterShop(Context context, List<Item> item) {
+    public MyAdapterShop(Context context, List<Book> item) {
         this.context = context;
         this.rentBook = item;
     }

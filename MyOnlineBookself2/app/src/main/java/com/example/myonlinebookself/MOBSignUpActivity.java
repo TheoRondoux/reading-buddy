@@ -26,8 +26,10 @@ public class MOBSignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup_layout);
-
-        mAuth = FirebaseAuth.getInstance();
+        if (getSupportActionBar() != null) {            //If title bar exists
+            getSupportActionBar().hide();               //Hiding it
+        }
+        mAuth = FirebaseAuth.getInstance();             //Getting instance of firebase authentication system
     }
 
     @Override
@@ -40,11 +42,15 @@ public class MOBSignUpActivity extends AppCompatActivity {
         }
     }
 
-    public void createAccount(View view)
+    /**
+     * Method called to create an account in the database. Checks if the password contains at least 8 characters, and if the the fields are empty or not.
+     * */
+    public void createAccount()
     {
         final EditText mUsernameInput = (EditText) findViewById(R.id.emailInputRegister);
         final EditText mPasswordInput = (EditText) findViewById(R.id.passwordInputRegister);
         final EditText mPasswordConfirmInput = (EditText) findViewById(R.id.passwordConfirmInputRegister);
+
         if (TextUtils.isEmpty(mUsernameInput.getText()))
         {
             Toast.makeText(this, "Email field is empty!", Toast.LENGTH_LONG).show();
@@ -61,7 +67,7 @@ public class MOBSignUpActivity extends AppCompatActivity {
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(String.valueOf(mUsernameInput.getText()), String.valueOf(mPasswordInput.getText()))
+        mAuth.createUserWithEmailAndPassword(String.valueOf(mUsernameInput.getText()), String.valueOf(mPasswordInput.getText()))        //Creating user using Firebase API
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

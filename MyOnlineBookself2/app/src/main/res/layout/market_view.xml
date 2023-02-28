@@ -23,7 +23,7 @@
         android:id="@+id/titleTextBookViewShop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Titre"
+        android:text="@string/title_text"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_toEndOf="@id/imageBookViewShop"
@@ -37,13 +37,13 @@
         android:layout_below="@id/titleTextBookViewShop"
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@id/imageBookViewShop"
-        android:background="@color/design_default_color_error" />
+        android:background="@color/dark_red" />
 
     <TextView
         android:id="@+id/authorBookViewShop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nom de l'auteur"
+        android:text="@string/author_name"
         android:textSize="14sp"
         android:layout_toEndOf="@id/imageBookViewShop"
         android:layout_below="@id/redLineView"
@@ -60,7 +60,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/white_button_with_black_border"
         android:elevation="8dp"
-        android:text="Read"
+        android:text="@string/read_text"
         android:textColor="@color/black"
         android:translationZ="8dp"/>
 

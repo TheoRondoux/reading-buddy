@@ -15,15 +15,11 @@
         android:theme="@style/Theme.MyOnlineBookself"
         android:name=".MOBApplication">
         <activity
-            android:name=".DetailsBook"
+            android:name=".MOBAccount"
             android:exported="true">
         </activity>
         <activity
-            android:name=".Account"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".Shop"
+            android:name=".MOBShop"
             android:exported="true">
         </activity>
         <activity
@@ -38,7 +34,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

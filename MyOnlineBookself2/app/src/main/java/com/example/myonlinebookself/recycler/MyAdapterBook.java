@@ -1,19 +1,19 @@
-package com.example.myonlinebookself;
+package com.example.myonlinebookself.recycler;
 
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myonlinebookself.items.Book;
+import com.example.myonlinebookself.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,9 +41,9 @@ La méthode "onBindViewHolder" est appelée pour chaque élément de la liste et
 public class MyAdapterBook extends RecyclerView.Adapter<MyViewHolderBook> {
 
     Context context;
-    List<Item> item;
+    List<Book> item;
 
-    public MyAdapterBook(Context context, List<Item> item) {
+    public MyAdapterBook(Context context, List<Book> item) {
         this.context = context;
         this.item = item;
     }
@@ -72,7 +72,7 @@ public class MyAdapterBook extends RecyclerView.Adapter<MyViewHolderBook> {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(context, "Book successfuly deleted!", Toast.LENGTH_LONG).show();
-                                //context.startActivity(new Intent(context, MainActivity.class));
+                                notifyDataSetChanged();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

@@ -1,4 +1,4 @@
-package com.example.myonlinebookself;
+package com.example.myonlinebookself.recycler;
 
 import android.view.View;
 import android.widget.Button;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myonlinebookself.R;
 
 
 /*La classe "MyViewHolder" a quatres variables membres.

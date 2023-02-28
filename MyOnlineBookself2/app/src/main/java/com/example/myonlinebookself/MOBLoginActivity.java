@@ -39,10 +39,13 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+        if (getSupportActionBar() != null) {            //If title bar exists
+            getSupportActionBar().hide();               //Hiding it
+        }
         mLoggingEditText = (EditText) findViewById(R.id.emailInputRegister);
         mPasswordEditText = (EditText) findViewById(R.id.passwordInputRegister);
 
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();     //Getting instance of Firebase authentication system
 
         //Random Quote system
         mQuoteText = (TextView) findViewById(R.id.quoteTextHolder);
@@ -50,7 +53,7 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
         manager = new RequestManager(this);
         manager.getAllQuotes(listner);
         dialog = new ProgressDialog(this);
-        dialog.setTitle("Loading...");
+        dialog.setTitle("Choosing a quote...");
         dialog.show();
     }
 
@@ -93,24 +96,23 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view){
-        if(TextUtils.isEmpty(mLoggingEditText.getText())){
+        if(TextUtils.isEmpty(mLoggingEditText.getText())){                                  //Checking if the login input is empty or not
             Toast.makeText(this, "Empty login!", Toast.LENGTH_LONG).show();
             return;
         }
-        if(TextUtils.isEmpty(mPasswordEditText.getText())){
+        if(TextUtils.isEmpty(mPasswordEditText.getText())){                                 //Checking if the password input is empty or not
             Toast.makeText(this, "Empty password!", Toast.LENGTH_LONG).show();
             return;
         }
-        mAuth.signInWithEmailAndPassword(String.valueOf(mLoggingEditText.getText()), String.valueOf(mPasswordEditText.getText()))
+        mAuth.signInWithEmailAndPassword(String.valueOf(mLoggingEditText.getText()), String.valueOf(mPasswordEditText.getText()))   //Try connection if both inputs are filled
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()){                         //If the connection is a success, starting the main activity
                             Log.d(TAG, "signInWithEmail:success");
-                            //FirebaseUser user = mAuth.getCurrentUser();
                             startActivity(new Intent(MOBLoginActivity.this, MainActivity.class));
-                        } else {
+                        } else {                                         //Else, showing an error message
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(MOBLoginActivity.this, "Authentication failed.", Toast.LENGTH_LONG).show();
                         }
@@ -118,6 +120,9 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
                 });
     }
 
+    /**
+     * Method that redirects to the signup activity. This method is used by the Sign Up button of this activity.
+     * */
     public void gotoSignUp(View view){
         startActivity(new Intent(this, MOBSignUpActivity.class));
     }

@@ -1,6 +1,6 @@
-package com.example.myonlinebookself;
+package com.example.myonlinebookself.items;
 
-public class Item {
+public class Book {
     String id;
     String title;
     String author;
@@ -8,7 +8,7 @@ public class Item {
     String details;
     int image;
 
-    public Item(String id, String title, String author, String description, String details, int image) {
+    public Book(String id, String title, String author, String description, String details, int image) {
         this.id = id;
         this.title = title;
         this.author = author;

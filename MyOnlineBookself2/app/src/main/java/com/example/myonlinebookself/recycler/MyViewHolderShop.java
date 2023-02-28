@@ -1,4 +1,4 @@
-package com.example.myonlinebookself;
+package com.example.myonlinebookself.recycler;
 
 import static android.content.ContentValues.TAG;
 
@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.myonlinebookself.R;
 
 public class MyViewHolderShop extends RecyclerView.ViewHolder {
 
