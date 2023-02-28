@@ -64,7 +64,7 @@ public class MyAdapterBook extends RecyclerView.Adapter<MyViewHolderBook> {
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();                 //Getting instance of the database
                 db.collection("OwnedBooks")
                         .document(holder.deleteButton.getTag().toString())
                         .delete()
@@ -85,15 +85,22 @@ public class MyAdapterBook extends RecyclerView.Adapter<MyViewHolderBook> {
         });
     }
 
+    /**
+     * Method to put the Id of a book in the tag of a button.
+     *
+     * @param holder is the holder
+     * @param userId is the ID of the user that owns the book
+     * @param bookId is the ID of the book that the user owns
+     * */
     protected void setDocIdInTag(MyViewHolderBook holder, String userId, String bookId){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();             //Getting instance of the database
         db.collection("OwnedBooks").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()){
-                    for (QueryDocumentSnapshot document : task.getResult()){
-                        if (document.get("userId").equals(userId) && document.get("bookId").equals(bookId)){
-                            holder.deleteButton.setTag(document.getId());
+                    for (QueryDocumentSnapshot document : task.getResult()){                                    //For every owned book
+                        if (document.get("userId").equals(userId) && document.get("bookId").equals(bookId)){    //If the book belongs to the logged user
+                            holder.deleteButton.setTag(document.getId());                                       //Setting the tag
                         }
                     }
                 }

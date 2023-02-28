@@ -112,8 +112,15 @@ public class MyAdapterShop extends RecyclerView.Adapter<MyViewHolderShop> {
 
     }
 
+    /**
+     * Method to add a book to the user's personal library in database
+     *
+     * @param bookId is the ID to the book that the user read
+     * @param holder id the holder
+     * @param userId is the ID of the user
+     * */
     public void addBookToCollection(String bookId, String userId, MyViewHolderShop holder){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();     //Getting instance of the database
         Map<String,String> ownedBook = new HashMap<>();
         ownedBook.put("bookId", bookId);
         ownedBook.put("userId", userId);
