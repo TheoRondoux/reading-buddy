@@ -10,4 +10,15 @@
     <string name="textview">TextView</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="back">Back</string>
+    <string name="author_name">Author Name</string>
+    <string name="email_text">Email</string>
+    <string name="number_of_books">Number of books read:</string>
+    <string name="logout_text">Logout</string>
+    <string name="header_title">My Online Bookshelf</string>
+    <string name="my_books_title">My Books</string>
+    <string name="all_books_title">All books</string>
+    <string name="remove_text">REMOVE</string>
+    <string name="read_text">READ</string>
+    <string name="title_text">Title</string>
+    <string name="my_account_title">My Account</string>
 </resources>

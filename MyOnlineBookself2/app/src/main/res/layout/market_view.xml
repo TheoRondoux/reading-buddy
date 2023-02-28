@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_background"
+    android:padding="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:elevation="8dp"
+    android:translationZ="8dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    >
+
+    <ImageView
+        android:id="@+id/imageBookViewShop"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        />
+
+    <TextView
+        android:id="@+id/titleTextBookViewShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_text"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/imageBookViewShop"
+        android:layout_alignTop="@id/imageBookViewShop"
+        android:layout_marginStart="16dp" />
+
+    <View
+        android:id="@+id/redLineView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/titleTextBookViewShop"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/imageBookViewShop"
+        android:background="@color/dark_red" />
+
+    <TextView
+        android:id="@+id/authorBookViewShop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/author_name"
+        android:textSize="14sp"
+        android:layout_toEndOf="@id/imageBookViewShop"
+        android:layout_below="@id/redLineView"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/whiteBookButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descriptionBook"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/white_button_with_black_border"
+        android:elevation="8dp"
+        android:text="@string/read_text"
+        android:textColor="@color/black"
+        android:translationZ="8dp"/>
+
+    <TextView
+        android:id="@+id/descriptionBook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageBookViewShop"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>

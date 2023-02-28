@@ -26,49 +26,49 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="16dp"
-        android:background="#9D2524"
+        android:background="@drawable/red_rounded_box_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <EditText
-            android:id="@+id/usernameInput"
+            android:id="@+id/emailInputRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
-            android:autofillHints=""
             android:ems="10"
-            android:hint="@string/username"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#A8FFFFFF"
+            android:hint="@string/email_text"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="TextContrastCheck" />
+            android:drawableLeft="@drawable/white_email_icon"/>
 
         <EditText
-            android:id="@+id/passwordInput"
+            android:id="@+id/passwordInputRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#A8FFFFFF"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/usernameInput"
-            tools:ignore="TextContrastCheck" />
+            app:layout_constraintTop_toBottomOf="@+id/emailInputRegister"
+            tools:ignore="TextContrastCheck"
+            android:drawableLeft="@drawable/white_lock"/>
 
         <Button
             android:id="@+id/register_button"
@@ -77,17 +77,18 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="#FFFFFF"
+            android:backgroundTint="@color/white"
             android:backgroundTintMode="src_over"
             android:foregroundTint="#000000"
+            android:onClick="createAccount"
             android:text="@string/sign_up"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordConfirmInput" />
+            app:layout_constraintTop_toBottomOf="@+id/passwordConfirmInputRegister" />
 
         <EditText
-            android:id="@+id/passwordConfirmInput"
+            android:id="@+id/passwordConfirmInputRegister"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -98,10 +99,11 @@
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            android:textColorHint="#A8FFFFFF"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordInput"
+            app:layout_constraintTop_toBottomOf="@+id/passwordInputRegister"
             tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
