@@ -63,7 +63,7 @@ public class MyAdapterShop extends RecyclerView.Adapter<MyViewHolderShop> {
                         boolean hasAlreadyOwnedThisBook = false;
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
-                                if (document.getString("userId").equals(mAuth.getUid()) && document.getString("bookId").equals(holder.detailsButton.getTag()))
+                                if (document.getString("userId").equals(mAuth.getUid()) && document.getString("bookId").equals(holder.detailsButton.getTag().toString()))
                                 {
                                     holder.detailsButton.setVisibility(View.GONE);
                                 }
@@ -85,6 +85,13 @@ public class MyAdapterShop extends RecyclerView.Adapter<MyViewHolderShop> {
         return rentBook.size();
     }
 
+    /**
+     * Method called when the user clicks on the "Read" button
+     *
+     * @param bookId is the id of the book
+     * @param userId is the id of the logged user
+     * @param holder is the holder
+     * */
     public void onClickRead(String bookId, String userId, MyViewHolderShop holder) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("OwnedBooks")
