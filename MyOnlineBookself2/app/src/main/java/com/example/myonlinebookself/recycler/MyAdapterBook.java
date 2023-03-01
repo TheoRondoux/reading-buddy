@@ -73,7 +73,7 @@ public class MyAdapterBook extends RecyclerView.Adapter<MyViewHolderBook> {
                             @Override
                             public void onSuccess(Void unused) {
                                 holder.titleView.setText("Deleted book");
-                                holder.authorView.setText("");
+                                holder.authorView.setText("Refresh the page to make this disappear.");
                                 holder.imageView.setImageResource(context.getResources().getIdentifier("@drawable/book_deleted", null, context.getPackageName()));
                                 holder.deleteButton.setVisibility(View.GONE);
                             }
