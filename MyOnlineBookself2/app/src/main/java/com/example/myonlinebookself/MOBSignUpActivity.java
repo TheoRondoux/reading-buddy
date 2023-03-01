@@ -45,7 +45,7 @@ public class MOBSignUpActivity extends AppCompatActivity {
     /**
      * Method called to create an account in the database. Checks if the password contains at least 8 characters, and if the the fields are empty or not.
      * */
-    public void createAccount()
+    public void createAccount(View view)
     {
         final EditText mUsernameInput = (EditText) findViewById(R.id.emailInputRegister);
         final EditText mPasswordInput = (EditText) findViewById(R.id.passwordInputRegister);
