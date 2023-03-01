@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class MOBLoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class RBLoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mLoggingEditText;
     private EditText mPasswordEditText;
     private TextView mQuoteText;
@@ -77,7 +77,7 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
         @Override
         public void didError(String message) {
             dialog.dismiss();
-            Toast.makeText(MOBLoginActivity.this, message, Toast.LENGTH_SHORT);
+            Toast.makeText(RBLoginActivity.this, message, Toast.LENGTH_SHORT);
         }
     };
 
@@ -111,10 +111,10 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
 
                         if (task.isSuccessful()){                         //If the connection is a success, starting the main activity
                             Log.d(TAG, "signInWithEmail:success");
-                            startActivity(new Intent(MOBLoginActivity.this, MainActivity.class));
+                            startActivity(new Intent(RBLoginActivity.this, MainActivity.class));
                         } else {                                         //Else, showing an error message
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MOBLoginActivity.this, "Authentication failed.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RBLoginActivity.this, "Authentication failed.", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -124,7 +124,7 @@ public class MOBLoginActivity extends AppCompatActivity implements View.OnClickL
      * Method that redirects to the signup activity. This method is used by the Sign Up button of this activity.
      * */
     public void gotoSignUp(View view){
-        startActivity(new Intent(this, MOBSignUpActivity.class));
+        startActivity(new Intent(this, RBSignUpActivity.class));
     }
 
 

@@ -5,31 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
-        android:text="@string/my_online_bookshelf"
-        android:textColor="#000000"
-        android:textSize="34sp"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="342dp"
+        android:layout_height="109dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/reading_buddy_banner" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/red_rounded_box_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
         <EditText
             android:id="@+id/emailInputRegister"
@@ -38,15 +34,16 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/white_email_icon"
             android:ems="10"
             android:hint="@string/email_text"
             android:inputType="textEmailAddress"
+            android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:drawableLeft="@drawable/white_email_icon"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/passwordInputRegister"
@@ -56,19 +53,19 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/white_lock"
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:minHeight="48dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailInputRegister"
-            tools:ignore="TextContrastCheck"
-            android:drawableLeft="@drawable/white_lock"/>
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/register_button"
@@ -79,6 +76,7 @@
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/white"
             android:backgroundTintMode="src_over"
+            android:drawableRight="@drawable/black_up_right_arrow"
             android:foregroundTint="#000000"
             android:onClick="createAccount"
             android:text="@string/sign_up"
@@ -94,18 +92,35 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:hint="@string/confirm_password"
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:minHeight="48dp"
+            android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordInputRegister"
             tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/back_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/white"
+        android:backgroundTintMode="src_over"
+        android:foregroundTint="#000000"
+        android:onClick="onClick"
+        android:text="@string/back"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/black_left_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

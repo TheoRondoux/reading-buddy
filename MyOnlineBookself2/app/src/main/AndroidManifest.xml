@@ -13,30 +13,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyOnlineBookself"
-        android:name=".MOBApplication">
+        android:name="com.example.myonlinebookself.RBApplication">
         <activity
-            android:name=".MOBAccount"
+            android:name="com.example.myonlinebookself.RBAccount"
             android:exported="true">
         </activity>
         <activity
-            android:name=".MOBShop"
+            android:name="com.example.myonlinebookself.RBShop"
             android:exported="true">
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.myonlinebookself.MainActivity"
             android:exported="true">
         </activity>
         <activity
-            android:name=".MOBSignUpActivity"
+            android:name="com.example.myonlinebookself.RBSignUpActivity"
             android:exported="true">
         </activity>
-        <activity android:name=".MOBLoginActivity"
+        <activity android:name="com.example.myonlinebookself.RBLoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

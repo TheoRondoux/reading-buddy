@@ -26,7 +26,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MOBShop extends AppCompatActivity {
+public class RBShop extends AppCompatActivity {
     ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class MOBShop extends AppCompatActivity {
                                             overridePendingTransition(0,0);
                                             return true;
                                         case R.id.account:
-                                            startActivity(new Intent(getApplicationContext(), MOBAccount.class));
+                                            startActivity(new Intent(getApplicationContext(), RBAccount.class));
                                             overridePendingTransition(0,0);
                                             return true;
                                     }
@@ -81,12 +81,14 @@ public class MOBShop extends AppCompatActivity {
                                 }
                             });
                             RecyclerView myRecyclerView2 = findViewById(R.id.recycleview2);
-                            myRecyclerView2.setLayoutManager(new LinearLayoutManager(MOBShop.this));
+                            myRecyclerView2.setLayoutManager(new LinearLayoutManager(RBShop.this));
                             myRecyclerView2.setAdapter(new MyAdapterShop(getApplicationContext(),rentBook));        //Giving all the books to the recycler view
                         } else {
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }
         });
+
+
     }
 }

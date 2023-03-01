@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myonlinebookself.MainActivity;
 import com.example.myonlinebookself.items.Book;
 import com.example.myonlinebookself.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -71,8 +72,10 @@ public class MyAdapterBook extends RecyclerView.Adapter<MyViewHolderBook> {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
-                                Toast.makeText(context, "Book successfuly deleted!", Toast.LENGTH_LONG).show();
-                                notifyDataSetChanged();
+                                holder.titleView.setText("Deleted book");
+                                holder.authorView.setText("");
+                                holder.imageView.setImageResource(context.getResources().getIdentifier("@drawable/book_deleted", null, context.getPackageName()));
+                                holder.deleteButton.setVisibility(View.GONE);
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

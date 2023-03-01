@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class MOBAccount extends AppCompatActivity implements View.OnClickListener{
+public class RBAccount extends AppCompatActivity implements View.OnClickListener{
     FirebaseAuth mAuth = FirebaseAuth.getInstance();    //Getting instance of the Firebase authentication system
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MOBAccount extends AppCompatActivity implements View.OnClickListene
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.shop:
-                        startActivity(new Intent(getApplicationContext(), MOBShop.class));
+                        startActivity(new Intent(getApplicationContext(), RBShop.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.books:
@@ -61,7 +61,7 @@ public class MOBAccount extends AppCompatActivity implements View.OnClickListene
      * */
     public void logout(){
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(MOBAccount.this, MOBLoginActivity.class);
+        Intent intent = new Intent(RBAccount.this, RBLoginActivity.class);
         // set the new task and clear flags
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

@@ -4,14 +4,19 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.provider.FontRequest;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.provider.FontsContract;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.myonlinebookself.items.Book;
@@ -29,6 +34,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ProgressDialog dialog;
+    List<Book> ownedBooks = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,21 +48,38 @@ public class MainActivity extends AppCompatActivity {
         dialog = new ProgressDialog(this);
         dialog.setTitle("Loading your books...");
         dialog.show();
-        getOwnedBooks(bottomNavigationView);
-        dialog.dismiss();
+        retrieveOwnedBooks();
 
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.books:
+                        return true;
+                    case R.id.shop:
+                        startActivity(new Intent(getApplicationContext(), RBShop.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.account:
+                        startActivity(new Intent(getApplicationContext(), RBAccount.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
     }
 
     /**
      *  Method to add the owned books to the Recycle View
      *
-     * @param bottomNavigationView is the navigation mennu
      * @param db is the instance of the database
      * @param document is one of the results of a task
      * @param ownedBooks is the list of all the books owned by the logged user
      * */
-    public void showOwnedBooks(FirebaseFirestore db, QueryDocumentSnapshot document, List<Book> ownedBooks, BottomNavigationView bottomNavigationView){
+    public void showOwnedBooks(FirebaseFirestore db, QueryDocumentSnapshot document, List<Book> ownedBooks){
         db.collection("Livre")
             .get()
             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -73,31 +96,13 @@ public class MainActivity extends AppCompatActivity {
                                 ownedBooks.add(new Book(documentSnapshot.getId(), documentSnapshot.getString("title"), documentSnapshot.getString("author"), documentSnapshot.getString("description"), documentSnapshot.getString("details"), imageResource));
                             }
                         }
-                        buildRecycleView(bottomNavigationView, ownedBooks);
+                        buildRecycleView(ownedBooks);
                     }
                 }
             });
     }
 
-    public void buildRecycleView(BottomNavigationView bottomNavigationView, List<Book> ownedBooks){
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case R.id.shop:
-                        startActivity(new Intent(getApplicationContext(), MOBShop.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.books:
-                        return true;
-                    case R.id.account:
-                        startActivity(new Intent(getApplicationContext(), MOBAccount.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });
+    public void buildRecycleView(List<Book> ownedBooks){
 
         RecyclerView recyclerView = findViewById(R.id.recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
@@ -107,13 +112,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Method that retrieve all the books owned by the logged user.
      *
-     * @param bottomNavigationView is the navigation menu
      * */
-    public void getOwnedBooks(BottomNavigationView bottomNavigationView){
+    public void retrieveOwnedBooks(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();         //Getting an instance of the database
         FirebaseAuth mAuth = FirebaseAuth.getInstance();                //Getting instance of the Firebase authentication system
-
-        List<Book> ownedBooks = new ArrayList<>();
 
         db.collection("OwnedBooks")                          //Looking into the "OwnedBooks" table
                 .whereEqualTo("userId",mAuth.getUid())              //And searching all the books of the logged user
@@ -124,12 +126,16 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful() && task.getResult().size() > 0)                 //If the user has at least one book read, displays it
                         {
                             for (QueryDocumentSnapshot document : task.getResult()){
-                                showOwnedBooks(db, document, ownedBooks, bottomNavigationView);
+                                ConstraintLayout constraintLayout = findViewById(R.id.noBookLayout);
+                                constraintLayout.setVisibility(View.GONE);
+                                showOwnedBooks(db, document, ownedBooks);
+                                dialog.dismiss();
                             }
                         }
                         else if (task.isSuccessful() && task.getResult().size() == 0) {         //else, redirecting to the list of all books
-                            Toast.makeText(MainActivity.this, "No books in you library...", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(MainActivity.this, MOBShop.class));
+                            RecyclerView recyclerView = findViewById(R.id.recycleview);
+                            recyclerView.setVisibility(View.GONE);
+                            dialog.dismiss();
                         }
                         else {
                             Log.d(TAG, "Error while looking for owned books");
@@ -137,6 +143,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    public List<Book> getOwnedBooks(){
+        return this.ownedBooks;
     }
 }
 

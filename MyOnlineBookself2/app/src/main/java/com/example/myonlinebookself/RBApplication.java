@@ -3,7 +3,7 @@ package com.example.myonlinebookself;
 import android.app.Application;
 import android.content.Context;
 
-public class MOBApplication extends Application {
+public class RBApplication extends Application {
     private static Context sContext;
 
     @Override

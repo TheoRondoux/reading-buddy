@@ -7,31 +7,17 @@
     android:foregroundTint="#FFFFFF"
     android:foregroundTintMode="src_over">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
-        android:text="@string/my_online_bookshelf"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/red_rounded_box_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <EditText
             android:id="@+id/emailInputRegister"
@@ -41,6 +27,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
+            android:backgroundTint="#FFF"
+            android:drawableLeft="@drawable/white_email_icon"
             android:ems="10"
             android:hint="@string/email_text"
             android:inputType="textPersonName"
@@ -50,10 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:backgroundTint="#FFF"
-            tools:ignore="TextContrastCheck"
-            android:drawableLeft="@drawable/white_email_icon"
-            />
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/register_button"
@@ -63,13 +48,13 @@
             android:layout_marginBottom="10dp"
             android:backgroundTint="#FFFFFF"
             android:backgroundTintMode="src_over"
+            android:drawableRight="@drawable/black_right_arrow"
             android:foregroundTint="#000000"
             android:onClick="onClick"
             android:text="@string/login"
             android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:drawableRight="@drawable/black_arrow"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
             android:id="@+id/passwordInputRegister"
@@ -79,18 +64,18 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
+            android:backgroundTint="#FFFFFF"
+            android:drawableLeft="@drawable/white_lock"
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:minHeight="48dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:backgroundTint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailInputRegister"
-            tools:ignore="TextContrastCheck"
-            android:drawableLeft="@drawable/white_lock"/>
+            tools:ignore="TextContrastCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -164,5 +149,15 @@
             app:layout_constraintTop_toBottomOf="@+id/quoteTextHolder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="342dp"
+        android:layout_height="109dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/reading_buddy_banner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

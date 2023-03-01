@@ -18,9 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.w3c.dom.Text;
-
-public class MOBSignUpActivity extends AppCompatActivity {
+public class RBSignUpActivity extends AppCompatActivity implements View.OnClickListener{
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -74,13 +72,18 @@ public class MOBSignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Log.d(TAG, "createUserWithEmail:success");
                             //FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(MOBSignUpActivity.this, "Account created !", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RBSignUpActivity.this, "Account created !", Toast.LENGTH_LONG).show();
                             finish();
                         } else {
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(MOBSignUpActivity.this, "Authentication failed.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RBSignUpActivity.this, "Authentication failed.", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+    }
+
+    @Override
+    public void onClick(View view) {
+        finish();
     }
 }
