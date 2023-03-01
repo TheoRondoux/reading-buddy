@@ -1,6 +1,6 @@
 <div align="center">
     <div class="images">
-        <a href="https://github.com/JambonPasFrais/python-project-M1">
+        <a href="https://github.com/TheoRondoux/reading-buddy">
             <img src="MyOnlineBookself2/app/src/main/res/drawable/reading_buddy_banner.png" alt="Logo" width="200">
         </a>
     </div>
