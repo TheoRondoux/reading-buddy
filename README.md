@@ -23,6 +23,9 @@ For the moment, this repo is just containing the Android Studio project.
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Firebase_Logo.svg/2560px-Firebase_Logo.svg.png" alt="Firebase" width=130 />
 </a>
 
+## License
+See `LICENSE.md`
+
 ## Contacts
 - Octave Bernard: [@LinkedIn](https://www.linkedin.com/in/octave-bernard-887596262/)
 - Maxime Jamelot: [@LinkedIn](https://www.linkedin.com/in/maxime-jamelot/)
